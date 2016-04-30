@@ -1,0 +1,1671 @@
+<!DOCTYPE HTML> <!-- saved from url=(0016)http://localhost -->
+
+<html style="background-color:#000">
+	<head>
+				<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=7">
+
+		<script type="text/javascript" src="getElementsByClassName.js"></script>
+		
+		<script type="text/javascript">
+		var lastNumber = 0;
+		var partNumber = 1;
+			
+		function showElement(number){
+			
+			var infos = getElementsByClassName( 'info' );
+			
+			if(number < 1 || number > 155){
+				if (lastNumber > 0) {
+				    infos[lastNumber-1].style.display = 'none';
+				}
+				return;
+			}
+			
+			for( var index = 0; index < infos.length; index++ ) {    
+				infos[index].style.display = 'none';
+			}
+			
+			//een lijst met het aantal onderdelen per part
+			var partSizeList = [6,8,3,2,7,9,15,5,7,3,8,2,4,4,5,4,5,16,5,1,4,2,5,6,12,4,3];
+
+			//een counter, om mee te tellen
+			var sizeCounter = 0;
+
+			//een loopje, is het number groter dan de huidige counter+het aantal onderdelen van de part waar we nu aan het kijken zijn, dan door gaan naar de volgende
+			//anders dan zit het nummer in wat we zoeken in deze part, en dan hoeven we natuurlijk niet meer verder te zoeken
+			for(var i = 0; i < partSizeList.length; i++){
+				if(number>sizeCounter+partSizeList[i])
+					sizeCounter += partSizeList[i];
+				else {
+					partNumber = i+1;
+					break;
+				}
+			}
+				
+			if (lastNumber != number){
+
+				infos[number-1].style.display = 'block';
+				lastNumber = number;
+			}
+			else
+				lastNumber = 0;
+			
+			window.location.href="#part"+partNumber;
+		}
+		
+		</script>
+		
+		<link href="philips.css" rel="stylesheet" type="text/css" />
+		
+		<style type="text/css">
+			.info {display:none;}
+		</style>
+		
+		<!-- Popup scripting -->
+		
+			<!-- Dependencies -->
+			<script src="jquery.js" type="text/javascript"></script>
+			<script src="jquery.ui.draggable.js" type="text/javascript"></script>
+			
+			<!-- Core files -->
+			<script src="jquery.alerts.js" type="text/javascript"></script>
+			<link href="jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+			
+			<!-- Example script -->
+			<script src="Alert_numbers.js" type="text/javascript"></script>
+
+		<!-- end popup scripting -->
+
+		<style <!-- table style -->>
+			table,th,td
+				{
+					margin:0px;
+					padding:0px;
+					border:0px;
+					border-collapse:collapse;
+				}
+		</style>
+		
+		<style <!-- inputbutton style -->>
+			input
+				{
+					margin:0px;
+					padding:0px;
+					border:solid Grey;
+					font-family:Philips Healthcare Font;
+					font-size: 14px;
+				}
+		</style>
+		
+	</head>
+	
+	<body onContextMenu="return false" >
+	
+	<div id="boxmenu">
+			<div id="header" class="h1">
+				<center>Table of Contents</center>
+			</div>
+		<div id="menu">
+			<table style="height:400px";>
+				<tr>
+					<td style="height:20px; width:500px">
+						- <a onclick="lastNumber=0" href="#part0">Introduction</a>
+					</td>
+					<td>
+						- <a onclick="showElement(80)" href="#part14">Image Acquisition: Single Shot</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						- <a onclick="showElement(1)" href="#part1">Overview of Veradius Unity Controls</a>
+					</td>
+					<td>
+						- <a onclick="showElement(84)" href="#part15">Image Acquisition: Subtraction</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						- <a onclick="showElement(7)" href="#part2">C-arm Brakes and Movements</a>
+					</td>
+					<td>
+						- <a onclick="showElement(89)" href="#part16">Image Acquisition: Roadmap after Subtraction</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						- <a onclick="showElement(15)" href="#part3">Start Up: Preparation</a>
+					</td>
+					<td>
+						- <a onclick="showElement(93)" href="#part17">Image Acquisition: Trace + Roadmap</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						- <a onclick="showElement(18)" href="#part4">Start Up: Switch on the system</a>
+					</td>
+					<td>
+						- <a onclick="showElement(98)" href="#part18">Post-acquisition: Screen Lay-out and available functions</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						- <a onclick="showElement(20)" href="#part5">Administration: Entering Patients Manually</a>
+					</td>
+					<td>
+						- <a onclick="showElement(114)" href="#part19">Post-acquisition: Collimation and Contrast Brightness adjustment</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						- <a onclick="showElement(27)" href="#part6">Administration: Retrieve Patients from RIS/HIS</a>
+					</td>
+					<td>
+						- <a onclick="showElement(119)" href="#part20">Post-acquisition: Image Protection/Image Flagging</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						- <a onclick="showElement(36)" href="#part7">C-arm stand touch screen: Overview of the Pre-acquisition screen</a>
+					</td>
+					<td>
+						- <a onclick="showElement(120)" href="#part21">Post-acquisition: Image Review</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						- <a onclick="showElement(51)" href="#part8">Pre-acquisition: Examination type selection on the C-arm stand</a>
+					</td>
+					<td>
+						- <a onclick="showElement(124)" href="#part22">Post-acquisition: Review of a run</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						- <a onclick="showElement(56)" href="#part9">Pre-acquisition: Settings for Fluoroscopy</a>
+					</td>
+					<td>
+						- <a onclick="showElement(126)" href="#part23">Post-acquisition: Outline tool (Mobile View Station)</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						- <a onclick="showElement(63)" href="#part10">Pre-acquisition: Settings for Exposure</a>
+					</td>
+					<td>
+						- <a onclick="showElement(131)" href="#part24">Post-acquisition: Position Memory</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						- <a onclick="showElement(66)" href="#part11">Pre-acquisition:  Image Orientation</a>
+					</td>
+					<td>
+						- <a onclick="showElement(137)" href="#part25">Post Processing on Mobile View Station</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						- <a onclick="showElement(74)" href="#part12">Pre-acquisition: Positioning (Position Tracking)</a>
+					</td>
+					<td>
+						- <a onclick="showElement(149)" href="#part26">Archiving stored images</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						- <a onclick="showElement(76)" href="#part13">Image Acquisition: General: Fluororscopy / Exposure</a>
+					</td>
+					<td>
+						- <a onclick="showElement(153)" href="#part27">Shut down: Emergency power off</a>
+					</td>
+				</tr>		
+			</table>
+		</div>	
+	</div>
+	
+	<div id="footer">
+		<table width="930">
+			<tr>
+				<td width="374" align="left">		<div style="width:200px"><a href="javascript:void(0)" onclick="showElement(lastNumber-1);" style="text-decoration:none; font-size:16px; display:block;"" class="new">&nbsp;&nbsp;Previous<br>&nbsp;</a></div></td>
+				<td width="374" align="center">	<div style="width:200px"><a href="#" style="text-decoration:none; font-size:16px; display:block;">Table of Contents<br>&nbsp;</a></div></td>
+				<td width="374" align="right">	<div style="width:200px"><a href="javascript:void(0)" onclick="showElement(lastNumber+1);" style="text-decoration:none; font-size:16px; display:block;"">	Next&nbsp;&nbsp;<br>&nbsp;</a></div></td>
+			</tr>
+		</table>
+	</div>
+	
+	
+	<!-- Part 0 -->
+	
+	<div id="header" class="h1">
+		<a name="part0"></a>
+		<center>Introduction</center>
+	</div>
+	
+	<div id="IMG">
+		<div id="text">
+			
+			<img src="1-1wit.png" STYLE="position:absolute; TOP:0px; LEFT:0px;" onclick="showElement(0);">
+				<b>Introduction</b><br><br><br>
+				Welcome to the help function of Veradius Unity. Here you can find how to use the system during the different steps in the workflow.<br><br>
+				Tap an item in the table of contents to open a page.<br><br>
+				Every page contains numbers, reflecting subsequent steps in the workflow.<br><br>
+				Tap a number for more information about the use of the system during that workflow step. Tap |Next| to see the next workflow step. After having read the last workflow step, tap |Next| to go to the next page.<br><br>
+				To get more information about a button, tap the number belonging to it.<br><br>
+				By tapping |Table of Contents| you will get back to the table of contents.<br><br>
+				When you close and re-open the help function again, it will continue on the page last reviewed. After restart of the full system the help function will start at the table of contents again.
+		</div>
+	</div>
+
+	<!-- Part 1 -->
+	
+	<div id="header" class="h1">
+		<a name="part1"></a>
+		<center>Overview of Veradius Unity Controls</center>
+	</div>
+	
+	<div id="IMG">
+	
+		<img src="Controls.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:10px; LEFT:10px;" onclick="showElement(1);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:10px; LEFT:240px;" onclick="showElement(2);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:150px; LEFT:230px;" onclick="showElement(3);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:10px; LEFT:400px;" onclick="showElement(4);">
+		<img src="button5_grey.png" STYLE="position:absolute; TOP:40px; LEFT:600px;" onclick="showElement(5);">
+		<img src="button6_grey.png" STYLE="position:absolute; TOP:250px; LEFT:600px;" onclick="showElement(6);">
+			
+		<input id="style_1" class="alert_1" type="button" value="Notes" />
+		
+		<div id="1" class="info" style="color:#000;">
+			(1) Mobile View Station
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:10px; LEFT:10px;" onclick="showElement(1);">
+		</div>
+		<div id="2" class="info" style="color:#000;">
+			(2) C-arm stand touch screen
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:10px; LEFT:240px;" onclick="showElement(2);">
+		</div>
+		<div id="3" class="info" style="color:#000;">
+			(3) Remote control
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:150px; LEFT:230px;" onclick="showElement(3);">
+		</div>
+		<div id="54" class="info" style="color:#000;">
+			(4) Hand switch
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:10px; LEFT:400px;" onclick="showElement(4);">
+		</div>
+		<div id="5" class="info" style="color:#000;">
+			(5) Foot switch wired
+			<img src="button5_blue.png" STYLE="position:absolute; TOP:40px; LEFT:600px;" onclick="showElement(5);">
+		</div>
+		<div id="6" class="info" style="color:#000;">
+			(6) Foot switch wireless
+			<img src="button6_blue.png" STYLE="position:absolute; TOP:250px; LEFT:600px;" onclick="showElement(6);">
+		</div>
+	</div>
+
+	<!-- Part 2 -->
+	
+	<div id="header" class="h1">
+		<a name="part2"></a>
+		<center>C-arm Brakes and Movements</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="Carm.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:30px; LEFT:120px;" onclick="showElement(7);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:90px; LEFT:220px;" onclick="showElement(8);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:320px; LEFT:140px;" onclick="showElement(9);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:220px; LEFT:10px;" onclick="showElement(9);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:220px; LEFT:200px;" onclick="showElement(10);">
+		<img src="button5_grey.png" STYLE="position:absolute; TOP:25px; LEFT:450px;" onclick="showElement(11);">
+		<img src="button6_grey.png" STYLE="position:absolute; TOP:230px; LEFT:470px;" onclick="showElement(12);">
+		<img src="button7_grey.png" STYLE="position:absolute; TOP:175px; LEFT:520px;" onclick="showElement(13);">
+		<img src="button8_grey.png" STYLE="position:absolute; TOP:250px; LEFT:340px;" onclick="showElement(14);">
+	
+		<div id="7" class="info" style="color:#000;">
+			(1) Release break.
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:30px; LEFT:120px;" onclick="showElement(7);">
+		</div>
+		<div id="8" class="info" style="color:#000;">
+			(2) Secure break.
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:90px; LEFT:220px;" onclick="showElement(8);">
+		</div>
+		<div id="9" class="info" style="color:#000;">
+			(3) Sideways movement: use both steering handles either in the left or right position.
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:320px; LEFT:140px;" onclick="showElement(9);">
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:220px; LEFT:10px;" onclick="showElement(9);">
+		</div>
+		<div id="10" class="info" style="color:#000;">
+			(4) Height movement: press the Up or Down keys on the C-arm console panel. If the C-arm is moved vertically down past the transport position (8cm) it stops and a red led appears. Press the down key again to continue moving the C-arm down. A short beep will sound while the transport position is passed. Be aware that the tank can hit the base of the stand in this position.
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:220px; LEFT:200px;" onclick="showElement(10);">
+		</div>
+		<div id="11" class="info" style="color:#000;">
+			(5) Longitudinal: Pink color coding.
+			<img src="button5_blue.png" STYLE="position:absolute; TOP:25px; LEFT:450px;" onclick="showElement(11);">
+		</div>
+		<div id="12" class="info" style="color:#000;">
+			(6) Rotation/Propeller movement: Orange color coding.
+			<img src="button6_blue.png" STYLE="position:absolute; TOP:230px; LEFT:470px;" onclick="showElement(12);">
+		</div>
+		<div id="13" class="info" style="color:#000;">
+			(7) Angulation/Orbital movement: Blue color coding. 
+			<img src="button7_blue.png" STYLE="position:absolute; TOP:175px; LEFT:520px;" onclick="showElement(13);">
+		</div>
+		<div id="14" class="info" style="color:#000;">
+			(8) Swivel or wig/wag: Black color coding. 
+			<img src="button8_blue.png" STYLE="position:absolute; TOP:250px; LEFT:340px;" onclick="showElement(14);">
+		</div>
+	</div>
+
+	<!-- Part 3 -->
+
+	<div id="header" class="h1">
+		<a name="part3"></a>
+		<center>Start Up: Preparation</center>	
+	</div>
+	
+	<div id="IMG">
+
+	<img src="Start.jpg" id="helppart">
+
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:30px; LEFT:100px;" onclick="showElement(15);">
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:100px; LEFT:140px;" onclick="showElement(15);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:270px; LEFT:110px;" onclick="showElement(16);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:300px; LEFT:380px;" onclick="showElement(16);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:220px; LEFT:370px;" onclick="showElement(17);">
+
+		<div id="15" class="info" style="color:#000;">
+			(1) Open the monitors after releasing the pins on the monitor pole.<br>
+					The monitors are hinged and can swing through 180 degrees for ease of viewing,
+					either for the physician at the tableside or for the operator at the mobileview station console.<br>
+					The monitors can be raised and lowered for increased flexibility of positioning.
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:30px; LEFT:100px;" onclick="showElement(15);">
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:100px; LEFT:140px;" onclick="showElement(15);">
+		</div>
+		<div id="16" class="info" style="color:#000;">
+			(2) Insert the Mobile View Station power plug into the wall outlet and connect the Mobile View Station cable to the C-arm stand by aligning the yellow dots. Turn the collar until it locks.
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:270px; LEFT:110px;" onclick="showElement(16);">
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:300px; LEFT:380px;" onclick="showElement(16);">
+		</div>
+		<div id="17" class="info" style="color:#000;">
+			(3) If needed, connect the Foot switch cable to the C-arm stand
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:220px; LEFT:370px;" onclick="showElement(17);">
+		</div>
+
+	</div>
+	
+	<!-- Part 4 -->	
+	
+	<div id="header" class="h1">
+		<a name="part4"></a>
+		<center>Start Up: Switch on the system</center>	
+	</div>
+	
+	<div id="IMG">
+
+	<img src="Switch.jpg"   usemap="#Switchmap" id="helppart">
+
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:25px; LEFT:80px;" onclick="showElement(18);">
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:90px; LEFT:390px;" onclick="showElement(18);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:100px; LEFT:720px;" onclick="showElement(19);">
+	
+	<input id="style_1" class="alert_3" type="button" value="Notes" />
+
+	<div id="18" class="info" style="color:#000;">
+		(1) Switch the system on, either on the Mobile View Station or on the C-arm stand. If the Password protection function is enabled, the Password panel appears after system start-up. Enter the correct password in the Password field and click OK.
+		<img src="button1_blue.png" STYLE="position:absolute; TOP:25px; LEFT:80px;" onclick="showElement(18);">
+		<img src="button1_blue.png" STYLE="position:absolute; TOP:90px; LEFT:390px;" onclick="showElement(18);">
+	</div>
+	<div id="19" class="info" style="color:#000;">
+		(2) Insert the key in the panel on the side of the C-arm stand and turn to horizontal position to enable radiation and height movement.
+		<img src="button2_blue.png" STYLE="position:absolute; TOP:100px; LEFT:720px;" onclick="showElement(19);">
+	</div>
+
+	</div>
+	
+	<!-- Part 5 -->	
+	
+	<div id="header" class="h1">
+		<a name="part5"></a>
+		<center>Administration: Entering Patients Manually</center>	
+	</div>
+	
+	<div id="IMG">
+
+	<img src="Admin.jpg" id="helppart">
+
+	<img src="button1_grey.png" STYLE="position:absolute; TOP:50px;  LEFT:50px;"  onclick="showElement(20);">
+	<img src="button2_grey.png" STYLE="position:absolute; TOP:0px;   LEFT:510px;" onclick="showElement(21);">
+	<img src="button3_grey.png" STYLE="position:absolute; TOP:35px;  LEFT:420px;" onclick="showElement(22);">
+	<img src="button4_grey.png" STYLE="position:absolute; TOP:0px;   LEFT:90px;"  onclick="showElement(23);">
+	<img src="button4_grey.png" STYLE="position:absolute; TOP:150px; LEFT:150px;" onclick="showElement(23);">
+	<img src="button5_grey.png" STYLE="position:absolute; TOP:225px; LEFT:605px;" onclick="showElement(24);">
+	<img src="button6_grey.png" STYLE="position:absolute; TOP:285px; LEFT:605px;" onclick="showElement(25);">
+	<img src="button7_grey.png" STYLE="position:absolute; TOP:110px; LEFT:420px;" onclick="showElement(26);">
+
+	<div id="20" class="info" style="color:#000;">
+		(1) Display the administration page at any time by pressing the administration key.
+		<img src="button1_blue.png" STYLE="position:absolute; TOP:50px; LEFT:50px;" onclick="showElement(20);">
+	</div>
+	<div id="21" class="info" style="color:#000;">
+		(2) Click the |Schedule| button.
+		<img src="button2_blue.png" STYLE="position:absolute; TOP:0px; LEFT:510px;" onclick="showElement(21);">
+	</div>
+	<div id="22" class="info" style="color:#000;">
+		(3) Click the |Add| button to enter a new patient.
+		<img src="button3_blue.png" STYLE="position:absolute; TOP:35px; LEFT:420px;" onclick="showElement(22);">
+	</div>
+	<div id="23" class="info" style="color:#000;">
+		(4) Enter patient data using the keyboard and the touchpad.
+		<img src="button4_blue.png" STYLE="position:absolute; TOP:0px; LEFT:90px;" onclick="showElement(23);">
+		<img src="button4_blue.png" STYLE="position:absolute; TOP:150px; LEFT:150px;" onclick="showElement(23);">
+	</div>
+	<div id="24" class="info" style="color:#000;">
+		(5) Select the procedure and anatomy or detailed procedure that corresponds to the procedure being performed.
+		<img src="button5_blue.png" STYLE="position:absolute; TOP:225px; LEFT:605px;" onclick="showElement(24);">
+	</div>
+	<div id="25" class="info" style="color:#000;">
+		(6) Click the |OK| button to confirm.
+		<img src="button6_blue.png" STYLE="position:absolute; TOP:285px; LEFT:605px;" onclick="showElement(25);">
+	</div>
+	<div id="26" class="info" style="color:#000;">
+		(7) Click the |Start examination| button.
+		<img src="button7_blue.png" STYLE="position:absolute; TOP:110px; LEFT:420px;" onclick="showElement(26);">
+	</div>
+	</div>
+	
+<!-- Part 6 -->	
+	
+	<div id="header" class="h1">
+		<a name="part6"></a>
+		<center>Administration: Retrieve Patients from RIS/HIS</center>	
+	</div>
+	
+	<div id="IMG">
+
+	<img src="AdminRH.jpg" id="helppart">
+
+	<img src="button1_grey.png" STYLE="position:absolute; TOP:50px;  LEFT:50px;"  onclick="showElement(27);">
+	<img src="button2_grey.png" STYLE="position:absolute; TOP:-10px; LEFT:250px;" onclick="showElement(28);">
+	<img src="button3_grey.png" STYLE="position:absolute; TOP:230px; LEFT:170px;" onclick="showElement(29);">
+	<img src="button4_grey.png" STYLE="position:absolute; TOP:200px; LEFT:370px;" onclick="showElement(30);">
+	<img src="button5_grey.png" STYLE="position:absolute; TOP:25px;  LEFT:270px;" onclick="showElement(31);">
+	<img src="button6_grey.png" STYLE="position:absolute; TOP:60px;  LEFT:550px;" onclick="showElement(32);">
+	<img src="button7_grey.png" STYLE="position:absolute; TOP:200px; LEFT:710px;" onclick="showElement(33);">
+	<img src="button8_grey.png" STYLE="position:absolute; TOP:260px; LEFT:710px;" onclick="showElement(34);">
+	<img src="button9_grey.png" STYLE="position:absolute; TOP:110px; LEFT:550px;" onclick="showElement(35);">
+
+	<div id="27" class="info" style="color:#000;">
+		(1) Display the administration page at any time by pressing the administration key.
+		<img src="button1_blue.png" STYLE="position:absolute; TOP:50px; LEFT:50px;" onclick="showElement(27);">
+	</div>
+	<div id="28" class="info" style="color:#000;">
+		(2) Click the |Schedule| button.
+		<img src="button2_blue.png" STYLE="position:absolute; TOP:-10px; LEFT:250px;" onclick="showElement(28);">
+	</div>
+	<div id="29" class="info" style="color:#000;">
+		(3) Click the |Get Worklist| button.
+		<img src="button3_blue.png" STYLE="position:absolute; TOP:230px; LEFT:170px;" onclick="showElement(29);">
+	</div>
+	<div id="30" class="info" style="color:#000;">
+		(4) Click |Run query|.
+		<img src="button4_blue.png" STYLE="position:absolute; TOP:200px; LEFT:370px;" onclick="showElement(30);">
+	</div>
+	<div id="31" class="info" style="color:#000;">
+		(5) Select a patient for acquisition.
+		<img src="button5_blue.png" STYLE="position:absolute; TOP:25px; LEFT:270px;" onclick="showElement(31);">
+	</div>
+	<div id="32" class="info" style="color:#000;">
+		(6) Click the |Modify| button if any changes are required.
+		<img src="button6_blue.png" STYLE="position:absolute; TOP:60px; LEFT:550px;" onclick="showElement(32);">
+	</div>
+	<div id="33" class="info" style="color:#000;">
+		(7)	Select the procedure and anatomy or detailed procedure that corresponds to the procedure being performed.
+		<img src="button7_blue.png" STYLE="position:absolute; TOP:200px; LEFT:710px;" onclick="showElement(33);">
+	</div>
+	<div id="34" class="info" style="color:#000;">
+		(8)	Click the |OK| button to confirm.
+		<img src="button8_blue.png" STYLE="position:absolute; TOP:260px; LEFT:710px;" onclick="showElement(34);">
+	</div>
+	<div id="35" class="info" style="color:#000;">
+		(9)	Click the |Start examination| button.
+		<img src="button9_blue.png" STYLE="position:absolute; TOP:110px; LEFT:550px;" onclick="showElement(35);">
+	</div>
+	</div>
+	
+	<!-- Part 7 -->	
+	
+	<div id="header" class="h1">
+		<a name="part7"></a>
+		<center>C-arm stand touch screen: Overview of the Pre-Acquisition screen</center>	
+	</div>
+	
+	<div id="IMG">
+
+	<img src="Acq.jpg" id="helppart">
+
+	<img src="button1_grey.png" STYLE="position:absolute; TOP:-20px; LEFT:0px;" onclick="showElement(36);">
+	<img src="button2_grey.png" STYLE="position:absolute; TOP:30px; LEFT:0px;" onclick="showElement(37);">
+	<img src="button3_grey.png" STYLE="position:absolute; TOP:200px; LEFT:0px;" onclick="showElement(38);">
+	<img src="button4_grey.png" STYLE="position:absolute; TOP:320px; LEFT:0px;" onclick="showElement(39);">
+	<img src="button4a_grey.png" STYLE="position:absolute; TOP:320px; LEFT:50px;" onclick="showElement(40);">
+	<img src="button4b_grey.png" STYLE="position:absolute; TOP:320px; LEFT:150px;" onclick="showElement(41);">
+	<img src="button4c_grey.png" STYLE="position:absolute; TOP:320px; LEFT:210px;" onclick="showElement(42);">
+	<img src="button4d_grey.png" STYLE="position:absolute; TOP:320px; LEFT:260px;" onclick="showElement(43);">
+	<img src="button4e_grey.png" STYLE="position:absolute; TOP:320px; LEFT:350px;" onclick="showElement(44);">
+	<img src="button4f_grey.png" STYLE="position:absolute; TOP:320px; LEFT:450px;" onclick="showElement(45);">
+	<img src="button4g_grey.png" STYLE="position:absolute; TOP:320px; LEFT:580px;" onclick="showElement(46);">
+	<img src="button5_grey.png" STYLE="position:absolute; TOP:-20px; LEFT:300px;" onclick="showElement(47);">
+	<img src="button5_grey.png" STYLE="position:absolute; TOP:110px; LEFT:550px;" onclick="showElement(47);">
+	<img src="button6_grey.png" STYLE="position:absolute; TOP:-20px; LEFT:400px;" onclick="showElement(48);">
+	<img src="button6a_grey.png" STYLE="position:absolute; TOP:290px; LEFT:680px;" onclick="showElement(49);">
+	<img src="button6b_grey.png" STYLE="position:absolute; TOP:100px; LEFT:670px;" onclick="showElement(50);">
+
+	<div id="36" class="info" style="color:#000;">
+		(1) After clicking the |Start examination| button on the Mobile View Station (explained in previous chapters) this overview of buttons will be available. Click this button (1) to change the examination type, the examination type shown is the default examination type or the examination type chosen on the Mobile View Station (see chapter Administration).
+		<img src="button1_blue.png" STYLE="position:absolute; TOP:-20px; LEFT:0px;" onclick="showElement(36);">
+	</div>
+	<div id="37" class="info" style="color:#000;">
+		(2) Acquisition settings area. In this area you can change the acquisition settings for:
+		<dd>- Fluoroscopy: the left (grey) hand/foot switch or </dd>
+		<dd>- Exposure: for the right (blue) hand/foot switch</dd>
+		<img src="button2_blue.png" STYLE="position:absolute; TOP:30px; LEFT:0px;" onclick="showElement(37);">
+	</div>
+	<div id="38" class="info" style="color:#000;">
+		(3) In this area you will find functions and tools that will support in orientation and positioning of the C-arm. Exception is the manual kVbutton, this will allow you to deselect automatic kV and select a kV value manually.
+		<img src="button3_blue.png" STYLE="position:absolute; TOP:200px; LEFT:0px;" onclick="showElement(38);">
+	</div>
+	<div id="39" class="info" style="color:#000;">
+		(4) This part of the C-arm stand touch screen is the status bar.
+		<img src="button4_blue.png" STYLE="position:absolute; TOP:320px; LEFT:0px;" onclick="showElement(39);">
+	</div>
+		<div id="40" class="info" style="color:#000;">
+			(4a) Patient information area containing patient details or in case not yet inserted “no name”.
+			<img src="button4a_blue.png" STYLE="position:absolute; TOP:320px; LEFT:50px;" onclick="showElement(40);">
+		</div>
+		<div id="41" class="info" style="color:#000;">
+			(4b) In this area any warnings or messages for this acquisition examination are saved. They appear in a pop-up box but after tapping |OK| they will be saved here. By tapping this area the pop-up box will be displayed again and in case of multiple messages you can scroll through all of them. 
+			<img src="button4b_blue.png" STYLE="position:absolute; TOP:320px; LEFT:150px;" onclick="showElement(41);">
+		</div>
+		<div id="42" class="info" style="color:#000;">
+			(4c) This areas shows if the system is ready (green) or not (red cross).
+			<img src="button4c_blue.png" STYLE="position:absolute; TOP:320px; LEFT:210px;" onclick="showElement(42);">
+		</div>
+		<div id="43" class="info" style="color:#000;">
+			(4d) X-ray indicator, will light up yellow in case of fluoroscopy or exposure.
+			<img src="button4d_blue.png" STYLE="position:absolute; TOP:320px; LEFT:260px;" onclick="showElement(43);">
+		</div>
+		<div id="44" class="info" style="color:#000;">
+			(4e) C-arm positions (rotation, angulation, longitudinal and height) values are shown in this area.
+			<img src="button4e_blue.png" STYLE="position:absolute; TOP:320px; LEFT:350px;" onclick="showElement(44);">
+		</div>
+		<div id="45" class="info" style="color:#000;">
+			(4f) Dose values of the acquisition exams are shown.
+			<img src="button4f_blue.png" STYLE="position:absolute; TOP:320px; LEFT:450px;" onclick="showElement(45);">
+		</div>
+		<div id="46" class="info" style="color:#000;">
+			(4g) Total X-ray time of the acquisition examination.
+			<img src="button4g_blue.png" STYLE="position:absolute; TOP:320px; LEFT:580px;" onclick="showElement(46);">
+		</div>
+	<div id="47" class="info" style="color:#000;">
+		(5) Tap the |Flip| and/or |Mirror| button to adjust the image based on the position of the patient. This can be performed prior to the first fluoroscopy if required.
+		<img src="button5_blue.png" STYLE="position:absolute; TOP:-20px; LEFT:300px;" onclick="showElement(47);">
+		<img src="button5_blue.png" STYLE="position:absolute; TOP:110px; LEFT:550px;" onclick="showElement(47);">
+	</div>
+	<div id="48" class="info" style="color:#000;">
+		(6) In this part we can find some extra functions.
+		<img src="button6_blue.png" STYLE="position:absolute; TOP:-20px; LEFT:400px;" onclick="showElement(48);">
+	</div>
+		<div id="49" class="info" style="color:#000;">
+			(6a) When tapping the |System| button a panel will appear where we can enable auto run cycle and or test the buzzer.
+			<img src="button6a_blue.png" STYLE="position:absolute; TOP:290px; LEFT:680px;" onclick="showElement(49);">
+		</div>
+		<div id="50" class="info" style="color:#000;">
+			(6b) Tap the |?| button to see the tooltips for all buttons on the screen, by tapping a particular |?| a short explanation of the button will appear.
+			<img src="button6b_blue.png" STYLE="position:absolute; TOP:100px; LEFT:670px;" onclick="showElement(50);">
+		</div>
+	</div>
+	
+	<!-- Part 8 -->	
+	
+	<div id="header" class="h1">
+		<a name="part8"></a>
+		<center>Pre-acquisition: Examination type selection on the C-arm stand</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="Exam.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:-20px; LEFT:0px;" onclick="showElement(51);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:30px; LEFT:230px;" onclick="showElement(52);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:30px; LEFT:330px;" onclick="showElement(53);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:300px; LEFT:500px;" onclick="showElement(54);">
+		<img src="button5_grey.png" STYLE="position:absolute; TOP:300px; LEFT:580px;" onclick="showElement(55);">
+	
+		<div id="51" class="info" style="color:#000;">
+			(1) Select examination type on the main screen, the examination type shown is the default examtype or the examination type chosen on the Mobile View Station (see chapter Administration).
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:-20px; LEFT:0px;" onclick="showElement(51);">
+		</div>
+		<div id="52" class="info" style="color:#000;">
+			(2) Select the required procedure. (The Vascular procedure and Pain procedure are optional.)
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:30px; LEFT:230px;" onclick="showElement(52);">
+		</div>
+		<div id="53" class="info" style="color:#000;">
+			(3) Select the required anatomy or detailed procedure depending on the selected procedure.
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:30px; LEFT:330px;" onclick="showElement(53);">
+		</div>
+		<div id="54" class="info" style="color:#000;">
+			(4) Tap |OK| to use the chosen examination type and return to main screen.
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:300px; LEFT:500px;" onclick="showElement(54);">
+		</div>
+		<div id="55" class="info" style="color:#000;">
+			(5) Tap |Cancel| to return to the previous examination type set for the system.
+			<img src="button5_blue.png" STYLE="position:absolute; TOP:300px; LEFT:580px;" onclick="showElement(55);">
+		</div>
+	</div>
+	
+	<!-- Part 9 -->	
+	
+	<div id="header" class="h1">
+		<a name="part9"></a>
+		<center>Pre-acquisition: Settings for Fluoroscopy</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="Fluor.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:5px; LEFT:0px;"     onclick="showElement(56);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:40px; LEFT:130px;"  onclick="showElement(57);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:70px; LEFT:270px;"  onclick="showElement(58);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:100px; LEFT:130px;" onclick="showElement(59);">
+		<img src="button5_grey.png" STYLE="position:absolute; TOP:130px; LEFT:270px;" onclick="showElement(60);">
+		<img src="button6_grey.png" STYLE="position:absolute; TOP:160px; LEFT:130px;" onclick="showElement(61);">
+		<img src="button7_grey.png" STYLE="position:absolute; TOP:160px; LEFT:200px;" onclick="showElement(62);">
+		
+		<input id="style_1" class="alert_4" type="button" value="Notes" />
+	
+		<div id="56" class="info" style="color:#000;">
+			(1) Tap the Fluoroscopy expander to open the expander where you will find the settings that can be changed for the left (grey) key of the hand switch or the left pedal of the foot switch.
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:5px; LEFT:0px;" onclick="showElement(56);">
+		</div>
+		<div id="57" class="info" style="color:#000;">
+			(2) Tap the |Mode| drop down list to change acquisition mode for fluoroscopy (the left grey key of the hand switch / left pedal of the Foot switch).<br>
+						The possibilities can differ per examination type and can be:
+	 					<dd>- Fluroscopy</dd>
+ 						<dd>- Roadmap (under vascular)</dd>
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:40px; LEFT:130px;" onclick="showElement(57);">
+		</div>
+		<div id="58" class="info" style="color:#000;">
+			(3) Tap the |Dose| drop down list to change the dose level of the chosen acquisition mode. Possibilities differ for the different examination types and/or acquisition modes. It can also differ when local requirements in regards to dose are applied (example high level disabled):
+ 						<dd>- Low</dd>
+ 						<dd>- Normal</dd>
+ 						<dd>- Increased</dd>
+ 						<dd>- High-level (not available for all examination types)</dd>
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:70px; LEFT:270px;" onclick="showElement(58);">
+		</div>
+		<div id="59" class="info" style="color:#000;">
+			(4) Tap the |Pulses| drop down list to change the pulse rate. There are three possible choices for pulse rate and these differ per examination type.
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:100px; LEFT:130px;" onclick="showElement(59);">
+		</div>
+		<div id="60" class="info" style="color:#000;">
+			(5) Tap the |Store| drop down list to change the settings. The choices available will be:
+ 						<dd>- No storage (default)</dd>
+ 						<dd>- LIH</dd>
+						<dd>- All</dd>
+			<img src="button5_blue.png" STYLE="position:absolute; TOP:130px; LEFT:270px;" onclick="showElement(60);">
+		</div>
+		<div id="61" class="info" style="color:#000;">
+			(6) Tap the |Reduce Blur| button to reduce blur in the image; when applying reduce blur the live image will become less blurry but the noise may increase (less noise reduction is applied) 
+			<img src="button6_blue.png" STYLE="position:absolute; TOP:160px; LEFT:130px;" onclick="showElement(61);">
+		</div>
+		<div id="62" class="info" style="color:#000;">
+			(7) Tap the |Reduce Noise| button to reduce noise in the image; when applying reduce noise the live image will become less noisy but blur may increase (more noise reduction is applied) 
+			<img src="button7_blue.png" STYLE="position:absolute; TOP:160px; LEFT:200px;" onclick="showElement(62);">
+		</div>
+	</div>
+	
+	<!-- Part 10 -->	
+	
+	<div id="header" class="h1">
+		<a name="part10"></a>
+		<center>Pre-acquisition: Settings for Exposure</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="Exposure.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:55px; LEFT:0px;"    onclick="showElement(63);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:70px; LEFT:130px;"  onclick="showElement(64);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:110px; LEFT:130px;" onclick="showElement(65);">
+		
+		<input id="style_1" class="alert_5" type="button" value="Notes" />
+	
+		<div id="63" class="info" style="color:#000;">
+			(1) Tap the Exposure expander to open the expander where you will find the default settings that can be changed for Exposure (right blue key of the hand switch / right pedal of the foot switch). These are:
+						<dd>- |Mode| to select the acquisition Mode</dd>
+						<dd>- |Pulses| to select the Pulse rate, except in case |Single Shot| is chosen under |Mode|</dd>
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:55px; LEFT:0px;" onclick="showElement(63);">
+		</div>
+		<div id="64" class="info" style="color:#000;">
+			(2) Tap the |Mode| drop down list to change the acquisition mode for Exposure (the right (blue) key of the hand switch / right pedal of the foot switch). The possible choices differ per chosen examination type and can be:
+						<table width="500">
+							<tr>
+								<td width="150">- Run</td>
+								<td width="250">- Subtract CO2 (when CO2 is enabled)</td>
+							</tr>
+							<tr>
+								<td>- Single Shot</td>
+								<td>- Trace</td>
+							</tr>
+							<tr>
+								<td>- Subtract</td>
+								<td>- Trace CO2 (when CO2 is enabled)</td>
+							</tr>
+						</table>	
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:70px; LEFT:130px;" onclick="showElement(64);">
+		</div>
+		<div id="65" class="info" style="color:#000;">
+			(3) Tap the |Pulses| drop down list to change the pulse rate. In case |Single Shot| is chosen under mode pulse rate cannot be changed. There are three possibilities available and these differ per examination type. 
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:110px; LEFT:130px;" onclick="showElement(65);">
+		</div>
+	</div>
+	
+	<!-- Part 11 -->	
+	
+	<div id="header" class="h1">
+		<a name="part11"></a>
+		<center>Pre-acquisition: Image Orientation</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="Orientation.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:230px; LEFT:0px;"   onclick="showElement(66);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:230px; LEFT:70px;"  onclick="showElement(67);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:200px; LEFT:200px;" onclick="showElement(68);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:270px; LEFT:450px;" onclick="showElement(68);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:0px;   LEFT:450px;" onclick="showElement(69);">
+		<img src="button5_grey.png" STYLE="position:absolute; TOP:150px; LEFT:680px;" onclick="showElement(70);">
+		<img src="button6_grey.png" STYLE="position:absolute; TOP:190px; LEFT:680px;" onclick="showElement(71);">
+		<img src="button7_grey.png" STYLE="position:absolute; TOP:270px; LEFT:130px;" onclick="showElement(72);">
+		<img src="button8_grey.png" STYLE="position:absolute; TOP:310px; LEFT:130px;" onclick="showElement(73);">
+		<img src="button8_grey.png" STYLE="position:absolute; TOP:310px; LEFT:250px;" onclick="showElement(73);">
+		
+		<input id="style_1" class="alert_6" type="button" value="Notes" />
+	
+		<div id="66" class="info" style="color:#000;">
+			(1) Tap |Detector Laser| to activate the laser at the detector side and use this as support for positioning. Tap |Detector Laser| once more to deselect this laser again.
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:230px; LEFT:0px;" onclick="showElement(66);">
+		</div>
+		<div id="67" class="info" style="color:#000;">
+			(2) Tap |Tube Laser| to activate the laser at the tube side and use this as support for positioning of the system. Tap |Tube Laser| once more to deselect this laser again.
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:230px; LEFT:70px;" onclick="showElement(67);">
+		</div>
+		<div id="68" class="info" style="color:#000;">
+			(3) Tap |ClearGuide| to make the direction indicators which are printed on the detector (clock), visible on/in the image. Tap |ClearGuide| once more to disable the function. The ClearGuide function supports image rotation prior to initial X-ray, positioning and communication between surgeon and operator when (re)positioning is required.
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:200px; LEFT:200px;" onclick="showElement(68);">
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:270px; LEFT:450px;" onclick="showElement(68);">
+		</div>
+		<div id="69" class="info" style="color:#000;">
+			(4) Image rotation; by dragging the control/handle the image can be rotated, also prior to the first X-ray. When ClearGuide is activated it can be defined which direction the image should be rotated prior to the first X-ray.
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:0px; LEFT:450px;" onclick="showElement(69);">
+		</div>
+		<div id="70" class="info" style="color:#000;">
+			(5) Tap |Flip| to flip the image in top-bottom direction. By tapping |Flip| once more the function will be deactivated. In case ClearGuide is active the direction indicators will be flipped with the image.
+			<img src="button5_blue.png" STYLE="position:absolute; TOP:150px; LEFT:680px;" onclick="showElement(70);">
+		</div>
+		<div id="71" class="info" style="color:#000;">
+			(6) Tap the |Mirror| button to mirror the image in left-right direction. By tapping the |Mirror| button once more the function will be deactivated. In case ClearGuide is active the direction indicators will be mirrored with the image.
+			<img src="button6_blue.png" STYLE="position:absolute; TOP:190px; LEFT:680px;" onclick="showElement(71);">
+		</div>
+		<div id="72" class="info" style="color:#000;">
+			(7) kV Manual; tap the |kV Manual| button to switch to manual control. The mA value is coupled to the kV value automatically. To switch back to automatic control tap the |kV Manual| button once more.
+			<img src="button7_blue.png" STYLE="position:absolute; TOP:270px; LEFT:130px;" onclick="showElement(72);">
+		</div>
+		<div id="73" class="info" style="color:#000;">
+			(8) With kV Manual active, tap the arrows to increase or decrease the kV value.
+			<img src="button8_blue.png" STYLE="position:absolute; TOP:310px; LEFT:130px;" onclick="showElement(73);">
+			<img src="button8_blue.png" STYLE="position:absolute; TOP:310px; LEFT:250px;" onclick="showElement(73);">
+		</div>
+	</div>
+	
+	<!-- Part 12 -->	
+	
+	<div id="header" class="h1">
+		<a name="part12"></a>
+		<center>Pre-acquisition: Positioning (Position Tracking)</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="Position.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:330px; LEFT:410px;" onclick="showElement(74);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:250px; LEFT:410px;" onclick="showElement(75);">
+	
+		<div id="74" class="info" style="color:#000;">
+			(1) If the position tracking option is installed, the system shows the current C-arm rotation, angulation, height and longitudinal positions digitally on the C-arm stand touch screen.
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:330px; LEFT:410px;" onclick="showElement(74);">
+		</div>
+		<div id="75" class="info" style="color:#000;">
+			(2) If the C-arm is moved, position information is magnified and shown in the center of the C-arm stand touch screen. Each figure is identified with the color corresponding to the colors used on the brake handles. If the C-arm is not moved for 5 seconds, the magnified figures fade from the screen.
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:250px; LEFT:410px;" onclick="showElement(75);">
+		</div>
+	</div>
+	
+	<!-- Part 13 -->	
+	
+	<div id="header" class="h1">
+		<a name="part13"></a>
+		<center>Image Acquisition: General: Fluoroscopy / Exposure</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="General.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:0px; LEFT:0px;"     onclick="showElement(76);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:100px; LEFT:30px;"  onclick="showElement(77);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:270px; LEFT:30px;"  onclick="showElement(77);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:30px; LEFT:360px;"  onclick="showElement(77);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:60px; LEFT:135px;"  onclick="showElement(78);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:220px; LEFT:145px;" onclick="showElement(78);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:60px; LEFT:420px;"  onclick="showElement(78);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:75px; LEFT:90px;"   onclick="showElement(79);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:240px; LEFT:90px;"  onclick="showElement(79);">
+		<img src="buttonA_grey.png" STYLE="position:absolute; TOP:120px; LEFT:550px;" onclick="showElement(79);">
+		
+		<input id="style_1" class="alert_7" type="button" value="Notes" />
+		<input id="style_1" class="alert_Example" type="button" value="Example"  STYLE="position:absolute; TOP:340px; LEFT:1003px; width:80px" />
+	
+		<div id="76" class="info" style="color:#000;">
+			(1) Based on the chosen examination type you can have to following combinations for the left and right key of the hand switch or left and right pedal of the foot switch:
+						<input id="style_1" class="alert_Table" type="button" value="Table" />
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:0px; LEFT:0px;" onclick="showElement(76);">
+		</div>
+		<div id="77" class="info" style="color:#000;">
+			(2) Fluoroscopy: Use the left (grey) key of the hand switch or the left pedal of the foot switch to initiate Fluoroscopy for C-arm (re)positioning and guiding purposes during surgical and interventional procedures. In vascular the fluoroscopy key is also used to initiate roadmap (see also Image Acquisition: Roadmap after Subtraction)
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:100px; LEFT:30px;" onclick="showElement(77);">
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:270px; LEFT:30px;" onclick="showElement(77);">
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:30px; LEFT:360px;" onclick="showElement(77);">
+		</div>
+		<div id="78" class="info" style="color:#000;">
+			(3) Exposure: Use the right (blue) key of the hand switch or the right pedal of the foot switch to initiate Exposure for storing high quality images (run) or when you want to use high quality single shot, subtraction or trace.
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:60px; LEFT:135px;"  onclick="showElement(78);">
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:220px; LEFT:145px;" onclick="showElement(78);">
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:60px; LEFT:420px;"  onclick="showElement(78);">
+		</div>
+		<div id="79" class="info" style="color:#000;">
+			(4) To change the default combination use the middle pedal of the foot switch or, when activated at installation the |Mode| key on the remote control you can change the default combination to another available combination within the examtype. 
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:75px; LEFT:90px;"   onclick="showElement(79);">
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:240px; LEFT:90px;"  onclick="showElement(79);">
+			<img src="buttonA_blue.png" STYLE="position:absolute; TOP:120px; LEFT:550px;" onclick="showElement(79);">
+		</div>
+	</div>
+	
+	<!-- Part 14 -->	
+	
+	<div id="header" class="h1">
+		<a name="part14"></a>
+		<center>Image Acquisition: Single Shot</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="Single.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:60px; LEFT:10px;"   onclick="showElement(80);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:70px; LEFT:220px;"  onclick="showElement(81);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:230px; LEFT:210px;" onclick="showElement(81);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:100px; LEFT:360px;" onclick="showElement(81);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:250px; LEFT:160px;" onclick="showElement(82);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:100px; LEFT:160px;" onclick="showElement(82);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:5px; LEFT:480px;"   onclick="showElement(82);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:40px; LEFT:280px;"  onclick="showElement(83);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:210px; LEFT:260px;" onclick="showElement(83);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:25px; LEFT:540px;"  onclick="showElement(83);">
+	
+		<div id="80" class="info" style="color:#000;">
+			(1) A single shot is used to obtain high quality static images. Make sure single shot acquisition mode under exposure is selected.
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:60px; LEFT:10px;"  onclick="showElement(80);">
+		</div>
+		<div id="81" class="info" style="color:#000;">
+			(2) Change Mode by tapping the |mode| drop down list (1) or by pressing the middle pedal of foot switch (if enabled) or the |Mode| key on the remote control (if enabled) for mode.
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:70px; LEFT:220px;"  onclick="showElement(81);">
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:230px; LEFT:210px;" onclick="showElement(81);">
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:100px; LEFT:360px;" onclick="showElement(81);">
+		</div>
+		<div id="82" class="info" style="color:#000;">
+			(3) Start by pressing the left (grey) key of the hand switch or the left pedal of the foot switch for positioning and to control the correct kV/mA level. You need to make a scout image prior to single shot to ensure optimal image quality.
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:250px; LEFT:160px;" onclick="showElement(82);">
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:100px; LEFT:160px;" onclick="showElement(82);">
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:5px; LEFT:480px;"   onclick="showElement(82);">
+		</div>
+		<div id="83" class="info" style="color:#000;">
+			(4) To obtain the single shot: press the right (blue) key of the hand switch or the right pedal of the foot switch until you hear a beep. The image will be stored automatically. Additional exposures in the same position can be made without performing a scout image.
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:40px; LEFT:280px;"  onclick="showElement(83);">
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:210px; LEFT:260px;" onclick="showElement(83);">
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:25px; LEFT:540px;"  onclick="showElement(83);">
+		</div>
+	</div>
+	
+	<!-- Part 15 -->	
+	
+	<div id="header" class="h1">
+		<a name="part15"></a>
+		<center>Image Acquisition: Subtraction</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="Subtraction.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:0px; LEFT:0px;"      onclick="showElement(84);">
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:120px; LEFT:80px;"   onclick="showElement(84);">
+		
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:350px; LEFT:0px;"    onclick="showElement(85);">
+		<img src="button2a_grey.png" STYLE="position:absolute; TOP:30px; LEFT:550px;"  onclick="showElement(85);">
+		<img src="button2b_grey.png" STYLE="position:absolute; TOP:250px; LEFT:550px;" onclick="showElement(85);">
+		<img src="button2c_grey.png" STYLE="position:absolute; TOP:10px; LEFT:840px;"  onclick="showElement(85);">
+		<img src="button2c_grey.png" STYLE="position:absolute; TOP:190px; LEFT:860px;" onclick="showElement(85);">
+		<img src="button2d_grey.png" STYLE="position:absolute; TOP:100px; LEFT:710px;" onclick="showElement(85);">
+		
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:90px; LEFT:550px;"   onclick="showElement(86);">
+		
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:30px; LEFT:780px;"   onclick="showElement(87);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:250px; LEFT:710px;"  onclick="showElement(87);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:210px; LEFT:810px;"  onclick="showElement(87);">
+		
+		<img src="button5_grey.png" STYLE="position:absolute; TOP:-10px; LEFT:900px;"  onclick="showElement(88);">
+		<img src="button5_grey.png" STYLE="position:absolute; TOP:170px; LEFT:920px;"  onclick="showElement(88);">
+		<img src="button5_grey.png" STYLE="position:absolute; TOP:260px; LEFT:760px;"  onclick="showElement(88);">
+	
+		<div id="84" class="info" style="color:#000;">
+			(1) Select a Vascular examination type and tap |OK|. Following combinations will be available under Vascular Iodine:<br>
+			<table width="580px">
+				<tr style="background-color:#bbb">
+					<td><i>Fluoroscopy (grey left switch)</i></td>
+					<td><i>Exposure (blue right switch)</i></td>
+				</tr>
+				<tr>
+					<td>Fluoroscopy</td>
+					<td>Subtract (default combination)</td>
+				</tr>
+				<tr>
+					<td>Fluoroscopy</td>
+					<td>Run</td>
+				</tr>
+				<tr>
+					<td>Roadmap</td>
+					<td>Trace</td>
+				</tr>
+				<tr>
+					<td>Fluoroscopy</td>
+					<td>Single shot</td>
+				</tr>
+			</table>
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:0px; LEFT:0px;"    onclick="showElement(84);">
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:120px; LEFT:80px;" onclick="showElement(84);">
+		</div>
+		<div id="85" class="info" style="color:#000;">
+			(2) To change to one of the other combinations following possibilities are available:
+			<dd>- tab the |mode| drop down list in the Fluoroscopy expander on the C-arm stand touch screen (2a)</dd>
+			<dd>- tab the |mode| drop down list in the Exposure expander on the C-arm stand touch screen (2b)</dd>
+			<dd>- toggle with the middle pedal of the foot switch (2c)</dd>
+			<dd>- if enabled use the |mode| key of the remote control (2d)</dd>
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:350px; LEFT:0px;"    onclick="showElement(85);">
+			<img src="button2a_blue.png" STYLE="position:absolute; TOP:30px; LEFT:550px;"  onclick="showElement(85);">
+			<img src="button2b_blue.png" STYLE="position:absolute; TOP:250px; LEFT:550px;" onclick="showElement(85);">
+			<img src="button2c_blue.png" STYLE="position:absolute; TOP:10px; LEFT:840px;"  onclick="showElement(85);">
+			<img src="button2c_blue.png" STYLE="position:absolute; TOP:190px; LEFT:860px;" onclick="showElement(85);">
+			<img src="button2d_blue.png" STYLE="position:absolute; TOP:100px; LEFT:710px;" onclick="showElement(85);">
+		</div>
+		<div id="86" class="info" style="color:#000;">
+			(3) If required the pulse rate for fluoroscopy or exposure can be adjusted by tapping the |pulses| drop down list on the C-arm stand touch screen.
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:90px; LEFT:550px;"   onclick="showElement(86);">
+		</div>
+		<div id="87" class="info" style="color:#000;">
+			(4) Press the left (grey) key of the hand switch or the left pedal of the foot switch (Fluoroscopy) to scout the desired location.
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:30px; LEFT:780px;"  onclick="showElement(87);">
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:250px; LEFT:710px;" onclick="showElement(87);">
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:210px; LEFT:810px;" onclick="showElement(87);">
+		</div>
+		<div id="88" class="info" style="color:#000;">
+			(5) Press the right (blue) key of the hand switch or the right pedal of the foot switch to create a subtraction run. Start the contrast injection after the message “Inject” appears in the lower right corner of the examination monitor. Release the right key or pedal as soon as the contrast bolus disappears.
+			<img src="button5_blue.png" STYLE="position:absolute; TOP:-10px; LEFT:900px;" onclick="showElement(88);">
+			<img src="button5_blue.png" STYLE="position:absolute; TOP:170px; LEFT:920px;" onclick="showElement(88);">
+			<img src="button5_blue.png" STYLE="position:absolute; TOP:260px; LEFT:760px;" onclick="showElement(88);">
+		</div>
+	</div>
+	
+	<!-- Part 16 -->	
+	
+	<div id="header" class="h1">
+		<a name="part16"></a>
+		<center>Image Acquisition: Roadmap after Subtraction</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="Roadmap.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:40px;  LEFT:65px;"  onclick="showElement(89);">
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:250px; LEFT:150px;" onclick="showElement(89);">
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:0px;   LEFT:310px;" onclick="showElement(89);">
+		
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:40px;  LEFT:120px;" onclick="showElement(90);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:250px; LEFT:80px;"  onclick="showElement(90);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:250px; LEFT:360px;" onclick="showElement(90);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:25px;  LEFT:375px;" onclick="showElement(90);">
+		
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:25px;  LEFT:450px;" onclick="showElement(91);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:25px;  LEFT:650px;" onclick="showElement(91);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:170px; LEFT:650px;" onclick="showElement(91);">
+		
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:35px;  LEFT:600px;" onclick="showElement(92);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:190px; LEFT:610px;" onclick="showElement(92);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:200px; LEFT:460px;" onclick="showElement(92);">
+		
+		<input id="style_1" class="alert_8" type="button" value="Notes" />
+	
+		<input id="style_1" class="alert_8" type="button" value="5" style="width:40px; height:40px; position:absolute; TOP:0px; LEFT:760px;"/>
+		<input id="style_1" class="alert_8" type="button" value="6" style="width:40px; height:40px; position:absolute; TOP:180px; LEFT:800px;"/>
+	
+		<div id="89" class="info" style="color:#000;">
+			(1) Use the Run cycle button on the C-arm stand touch screen, the remote control or the Mobile View Station to start and stop the run and select the image to be used for the roadmap mask from a previous acquired subtraction run. 
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:40px;  LEFT:65px;"  onclick="showElement(89);">
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:250px; LEFT:150px;" onclick="showElement(89);">
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:0px;   LEFT:310px;" onclick="showElement(89);">
+		</div>
+		<div id="90" class="info" style="color:#000;">
+			(2) When the run on the examination monitor is paused, tap the Next/Previous arrow buttons on the C-arm stand touch screen, the remote control or the Mobile View Station to select the image to be used as roadmap mask.
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:40px;  LEFT:120px;" onclick="showElement(90);">
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:250px; LEFT:80px;"  onclick="showElement(90);">
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:250px; LEFT:360px;" onclick="showElement(90);">
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:25px;  LEFT:375px;" onclick="showElement(90);">
+		</div>
+		<div id="91" class="info" style="color:#000;">
+			(3) With the roadmap mask image displayed on the examination monitor, tab the Fluoroscopy expander and change the |Mode| to Roadmap or toggle with the middle pedal of the foot switch or, if enabled, use the |Mode| key of the remote control to change the |Mode| to Roadmap.
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:25px;  LEFT:450px;" onclick="showElement(91);">
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:25px;  LEFT:650px;" onclick="showElement(91);">
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:170px; LEFT:650px;" onclick="showElement(91);">
+		</div>
+		<div id="92" class="info" style="color:#000;">
+			(4) Press the grey key of the hand switch or the left pedal of the foot switch to guide a catheter (displayed black) through the vessels (displayed white)
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:35px;  LEFT:600px;" onclick="showElement(92);">
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:190px; LEFT:610px;" onclick="showElement(92);">
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:200px; LEFT:460px;" onclick="showElement(92);">
+		</div>
+	</div>
+	
+	<!-- Part 17 -->	
+	
+	<div id="header" class="h1">
+		<a name="part17"></a>
+		<center>Image Acquisition: Trace + Roadmap</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="Trace.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:35px;  LEFT:30px;"  onclick="showElement(93);">
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:220px; LEFT:80px;"  onclick="showElement(93);">
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:270px; LEFT:350px;" onclick="showElement(93);">
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:60px;  LEFT:370px;" onclick="showElement(93);">
+		
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:240px; LEFT:30px;"  onclick="showElement(94);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:300px; LEFT:280px;" onclick="showElement(94);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:10px;  LEFT:480px;" onclick="showElement(94);">
+		
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:50px; LEFT:200px;"  onclick="showElement(95);">
+		
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:195px; LEFT:140px;" onclick="showElement(96);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:240px; LEFT:420px;" onclick="showElement(96);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:30px;  LEFT:550px;" onclick="showElement(96);">
+		
+		<img src="button5_grey.png" STYLE="position:absolute; TOP:25px; LEFT:650px;"  onclick="showElement(97);">
+	
+		<div id="93" class="info" style="color:#000;">
+			(1) Tab the Fluoroscopy expander and change the |Mode| to Fluoroscopy or toggle with the middle pedal of the foot switch or, if enabled, use the |Mode| key of the remote control to change the |Mode| to Fluoroscopy.
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:35px;  LEFT:30px;"  onclick="showElement(93);">
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:220px; LEFT:80px;"  onclick="showElement(93);">
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:270px; LEFT:350px;" onclick="showElement(93);">
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:60px;  LEFT:370px;" onclick="showElement(93);">
+		</div>
+		<div id="94" class="info" style="color:#000;">
+			(2) Press the left (grey) key of the hand switch or the left pedal of the foot switch to scout the desired location.
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:240px; LEFT:30px;"  onclick="showElement(94);">
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:300px; LEFT:280px;" onclick="showElement(94);">
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:10px;  LEFT:480px;" onclick="showElement(94);">
+		</div>
+		<div id="95" class="info" style="color:#000;">
+			(3) tab the Exposure expander and change the |Mode| to Trace or toggle with the middle pedal (1) of the foot switch or, if enabled, use the |Mode| key (1) of the remote control to change the |Mode| to Trace. 
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:50px; LEFT:200px;" onclick="showElement(95);">
+		</div>
+		<div id="96" class="info" style="color:#000;">
+			(4) Press the right (blue) key of the hand switch or the right pedal of the foot switch  to create a Trace image. Start the contrast injection after the message “Inject” appears in the lower right corner of the examination monitor. The subtracted Trace image appears on the examination monitor. Release the hand switch or pedal after the injection is finished.
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:195px; LEFT:140px;" onclick="showElement(96);">
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:240px; LEFT:420px;" onclick="showElement(96);">
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:30px;  LEFT:550px;" onclick="showElement(96);">
+		</div>
+		<div id="97" class="info" style="color:#000;">
+			(5) Press the grey key of the hand switch or the left pedal of the foot switch to guide a catheter (displayed black) through the vessels (displayed white) 
+			<img src="button5_blue.png" STYLE="position:absolute; TOP:25px; LEFT:650px;" onclick="showElement(97);">
+		</div>
+	</div>
+	
+	<!-- Part 18 -->	
+	
+	<div id="header" class="h1">
+		<a name="part18"></a>
+		<center>Post-acquisition: Screen Lay-out and available functions</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="layout.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute;  TOP:0px;   LEFT:0px;"    onclick="showElement(98);">
+		<img src="button2_grey.png" STYLE="position:absolute;  TOP:150px; LEFT:170px;"  onclick="showElement(99);">
+		<img src="button3_grey.png" STYLE="position:absolute;  TOP:300px; LEFT:550px;"  onclick="showElement(100);">
+		<img src="button4_grey.png" STYLE="position:absolute;  TOP:220px; LEFT:550px;"  onclick="showElement(101);">
+		<img src="button5_grey.png" STYLE="position:absolute;  TOP:25px;  LEFT:250px;"  onclick="showElement(102);">
+		<img src="button6_grey.png" STYLE="position:absolute;  TOP:260px; LEFT:550px;"  onclick="showElement(103);">
+		<img src="button7_grey.png" STYLE="position:absolute;  TOP:0px;   LEFT:310px;"  onclick="showElement(104);">
+		<img src="button8_grey.png" STYLE="position:absolute;  TOP:20px;  LEFT:550px;"  onclick="showElement(105);">
+		<img src="button9_grey.png" STYLE="position:absolute;  TOP:60px;  LEFT:550px;"  onclick="showElement(106);">
+		<img src="button10_grey.png" STYLE="position:absolute; TOP:100px; LEFT:550px;"  onclick="showElement(107);">
+		<img src="button11_grey.png" STYLE="position:absolute; TOP:100px; LEFT:790px;"  onclick="showElement(108);">
+		<img src="button12_grey.png" STYLE="position:absolute; TOP:140px; LEFT:550px;"  onclick="showElement(109);">
+		<img src="button13_grey.png" STYLE="position:absolute; TOP:210px; LEFT:0px;"    onclick="showElement(110);">
+		<img src="button14_grey.png" STYLE="position:absolute; TOP:300px; LEFT:230px;"  onclick="showElement(111);">
+		<img src="button15_grey.png" STYLE="position:absolute; TOP:270px; LEFT:60px;"   onclick="showElement(112);">
+		<img src="button16_grey.png" STYLE="position:absolute; TOP:210px; LEFT:60px;"   onclick="showElement(113);">
+	
+		<div id="98" class="info" style="color:#000;">
+			(1) Screen after selection of the examination type skeleton.
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:0px; LEFT:0px;" onclick="showElement(98);">
+		</div>
+		<div id="99" class="info" style="color:#000;">
+			(2) Graphic controls for positioning of the shutters. By dragging the control the shutters can be moved in all desired directions. 
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:150px; LEFT:170px;" onclick="showElement(99);">
+		</div>
+		<div id="100" class="info" style="color:#000;">
+			(3) Tap the |Automatic Shutter Pos.| (ASP) button to automatically position the shutters. ASP will only work if no shutters and diaphragm collimator are present in the image and if there are areas of direct radiation next to the anatomy.
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:300px; LEFT:550px;" onclick="showElement(100);">
+		</div>
+		<div id="101" class="info" style="color:#000;">
+			(4) The shutters can be coupled by tapping the |Couple Shutters| button. This button will become active (yellow).
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:220px; LEFT:550px;" onclick="showElement(101);">
+		</div>
+		<div id="102" class="info" style="color:#000;">
+			(5) The diaphragm collimator control can be dragged towards, or away from, the centre of the image. 
+			<img src="button5_blue.png" STYLE="position:absolute; TOP:25px; LEFT:250px;" onclick="showElement(102);">
+		</div>
+		<div id="103" class="info" style="color:#000;">
+			(6) If the shutters and/or diaphragm collimator are positioned but they need to be removed quickly, tap the |Reset Shutters and Collimator| button. 
+			<img src="button6_blue.png" STYLE="position:absolute; TOP:260px; LEFT:550px;" onclick="showElement(103);">
+		</div>
+		<div id="104" class="info" style="color:#000;">
+			(7) Image Rotation; by dragging the control/handle the image can be rotated, also prior to the first X-ray.
+			<img src="button7_blue.png" STYLE="position:absolute; TOP:0px; LEFT:310px;" onclick="showElement(104);">
+		</div>
+		<div id="105" class="info" style="color:#000;">
+			(8) By tapping the |Flag| button you can flag and protect the image.
+			<img src="button8_blue.png" STYLE="position:absolute; TOP:20px; LEFT:550px;" onclick="showElement(105);">
+		</div>
+		<div id="106" class="info" style="color:#000;">
+		 (9) By tapping the |Park| button the image will be parked on the reference monitor and saved.
+			<img src="button9_blue.png" STYLE="position:absolute; TOP:60px; LEFT:550px;" onclick="showElement(106);">
+		</div>
+		<div id="107" class="info" style="color:#000;">
+			(10) When a lot or metal is present in the image a “metal” contrast brightness correction can be applied by tapping the |Metal| button.
+			<img src="button10_blue.png" STYLE="position:absolute; TOP:100px; LEFT:550px;" onclick="showElement(107);">
+		</div>
+		<div id="108" class="info" style="color:#000;">
+			(11) Note that for Cardiac or Vascular examination types the |Metal| button will not be available, in these cases it will be replaced by the |Recall| button. By tapping the |Recall| button the image will be placed back from the reference monitor to the examination monitor. 
+			<img src="button11_blue.png" STYLE="position:absolute; TOP:100px; LEFT:790px;" onclick="showElement(108);">
+		</div>
+		<div id="109" class="info" style="color:#000;">
+			(12) Tap the |Contrast Brightness| button for changing the contrast and brightness settings with the help of a slider. Also the Auto Contrast and Brightness can be chosen here.
+			<img src="button12_blue.png" STYLE="position:absolute; TOP:140px; LEFT:550px;" onclick="showElement(109);">
+		</div>
+		<div id="110" class="info" style="color:#000;">
+			(13) Tap the |Detector Zoom| button to magnify an image by changing the detector zoom, available are: no zoom, zoom 1 and zoom 2 which will be visible for a short time in right corner of the image on the Mobile View Station and the C-arm stand touch screen.
+			<img src="button13_blue.png" STYLE="position:absolute; TOP:210px; LEFT:0px;" onclick="showElement(110);">
+		</div>
+		<div id="111" class="info" style="color:#000;">
+			(14) Review bar to review stored images
+			<img src="button14_blue.png" STYLE="position:absolute; TOP:300px; LEFT:230px;" onclick="showElement(111);">
+		</div>
+		<div id="112" class="info" style="color:#000;">
+			(15) Tap the |Position Memory| button to activate position memory which allows you to store C-arm positions (see also chapter post acquisition: Position Memory) 
+			<img src="button15_blue.png" STYLE="position:absolute; TOP:270px; LEFT:60px;" onclick="showElement(112);">
+		</div>
+		<div id="113" class="info" style="color:#000;">
+			(16) When ClearGuide is activated it can be defined which direction the image should be rotated prior to the first X-ray (see also chapter Pre-acquisition: Image Orientation)
+			<img src="button16_blue.png" STYLE="position:absolute; TOP:210px; LEFT:60px;" onclick="showElement(113);">
+		</div>
+	</div>
+	
+		<!-- Part 19 -->	
+	
+	<div id="header" class="h1">
+		<a name="part19"></a>
+		<center>Post-acquisition: Collimation and Contrast Brightness adjustment</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="Coll.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:120px; LEFT:550px;" onclick="showElement(114);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:200px; LEFT:500px;" onclick="showElement(115);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:140px; LEFT:500px;" onclick="showElement(116);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:140px; LEFT:460px;" onclick="showElement(117);">
+		
+		<img src="button5_grey.png" STYLE="position:absolute; TOP:50px;  LEFT:740px;" onclick="showElement(118);">
+		<img src="buttonA_grey.png" STYLE="position:absolute; TOP:250px; LEFT:650px;" onclick="showElement(118);">
+	
+		<div id="114" class="info" style="color:#000;">
+			(1) To adjust contrast/brightness tap the |Contrast Brightness| button.
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:120px; LEFT:550px;" onclick="showElement(114);">
+		</div>
+		<div id="115" class="info" style="color:#000;">
+			(2) Tab the |Auto| button for automatic calculation of the Contrast/Brightness.
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:200px; LEFT:500px;" onclick="showElement(115);">
+		</div>
+		<div id="116" class="info" style="color:#000;">
+			(3) Use the slider to adjust the contrast brightness manually. 
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:140px; LEFT:500px;" onclick="showElement(116);">
+		</div>
+		<div id="117" class="info" style="color:#000;">
+			(4) Drag the control of the shutters in the desired direction.
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:140px; LEFT:460px;" onclick="showElement(117);">
+		</div>
+		<div id="118" class="info" style="color:#000;">
+			(5) After performing Fluoroscopy or Exposure the shutter will be visible in the image. In case enabled at installation the Automatic Electronic Blanking will be applied automatically and cover the physical shutters (A). The shutters now appear in deep black not in grey.
+			<img src="button5_blue.png" STYLE="position:absolute; TOP:50px;  LEFT:740px;" onclick="showElement(118);">
+			<img src="buttonA_blue.png" STYLE="position:absolute; TOP:250px; LEFT:650px;" onclick="showElement(118);">
+		</div>
+	</div>
+	
+	<!-- Part 20 -->	
+	
+	<div id="header" class="h1">
+		<a name="part20"></a>
+		<center>Post-acquisition: Image Protection/Image Flagging</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="Flag.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:20px;  LEFT:550px;" onclick="showElement(119);">
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:160px; LEFT:790px;" onclick="showElement(119);">
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:260px; LEFT:660px;" onclick="showElement(119);">
+	
+		<div id="119" class="info" style="color:#000;">
+			(1) Single images and runs can be flagged (and protected) for export by tapping the |Flag| button on the C-arm stand touch screen, or by pressing the flag key on the on the remote control, or the Mobile View Station. If an image (or run) was not already stored automatically (see also chapter Pre-acquisition) it will be stored by flagging.
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:20px;  LEFT:550px;" onclick="showElement(119);">
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:160px; LEFT:790px;" onclick="showElement(119);">
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:260px; LEFT:660px;" onclick="showElement(119);">
+		</div>
+	</div>
+	
+	<!-- Part 21 -->	
+	
+	<div id="header" class="h1">
+		<a name="part21"></a>
+		<center>Post-acquisition: Image Review</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="Review.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:70px;  LEFT:50px;"  onclick="showElement(120);">
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:220px; LEFT:120px;" onclick="showElement(120);">
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:10px;  LEFT:260px;" onclick="showElement(120);">
+		
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:200px; LEFT:990px;" onclick="showElement(121);">
+		<img src="buttonA_grey.png" STYLE="position:absolute; TOP:180px; LEFT:880px;" onclick="showElement(121);">
+		<img src="buttonB_grey.png" STYLE="position:absolute; TOP:220px; LEFT:880px;" onclick="showElement(121);">
+		
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:40px;  LEFT:230px;" onclick="showElement(122);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:220px; LEFT:10px;"  onclick="showElement(122);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:220px; LEFT:200px;" onclick="showElement(122);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:70px;  LEFT:150px;" onclick="showElement(122);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:300px; LEFT:580px;" onclick="showElement(122);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:300px; LEFT:780px;" onclick="showElement(122);">
+		
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:40px;  LEFT:520px;" onclick="showElement(123);">
+		<img src="buttonC_grey.png" STYLE="position:absolute; TOP:90px;  LEFT:0px;"   onclick="showElement(123);">
+		<img src="buttonC_grey.png" STYLE="position:absolute; TOP:290px;  LEFT:690px;"   onclick="showElement(123);">
+	
+		<div id="120" class="info" style="color:#000;">
+			(1) Tab the Overview button on the C-arm stand touch screen, or press the key on the Mobile View Station or on the remote control to get an overview of the stored images.
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:70px;  LEFT:50px;" onclick="showElement(120);">
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:220px; LEFT:120px;" onclick="showElement(120);">
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:10px;  LEFT:260px;" onclick="showElement(120);">
+		</div>
+		<div id="121" class="info" style="color:#000;">
+			(2) Choose how you like to review by tapping |All Images| (A) or |One Image per Run| (B)
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:200px; LEFT:990px;" onclick="showElement(121);">
+			<img src="buttonA_blue.png" STYLE="position:absolute; TOP:180px; LEFT:880px;" onclick="showElement(121);">
+			<img src="buttonB_blue.png" STYLE="position:absolute; TOP:220px; LEFT:880px;" onclick="showElement(121);">
+		</div>
+		<div id="122" class="info" style="color:#000;">
+			(3) Use the arrow key (C-arm stand touch screen, Mobile View Station or remote control) to navigate through the stored images. 
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:40px;  LEFT:230px;" onclick="showElement(122);">
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:220px; LEFT:10px;" onclick="showElement(122);">
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:220px; LEFT:200px;" onclick="showElement(122);">
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:70px;  LEFT:150px;" onclick="showElement(122);">
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:300px; LEFT:580px;" onclick="showElement(122);">
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:300px; LEFT:780px;" onclick="showElement(122);">
+		</div>
+		<div id="123" class="info" style="color:#000;">
+			(4) To view the selected image:
+			<dd>- Tap the image directly 2 times on the touch screen (C-arm / Mobile View Station) or </dd>
+			<dd>- Press again the Overview key remote control as described under (1) or</dd>
+			<dd>- Tap/press the single image button/key on the C-arm stand touch screen or Mobile View Station (C)</dd>
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:40px; LEFT:520px;" onclick="showElement(123);">
+			<img src="buttonC_blue.png" STYLE="position:absolute; TOP:90px; LEFT:0px;" onclick="showElement(123);">
+			<img src="buttonC_blue.png" STYLE="position:absolute; TOP:290px; LEFT:690px;" onclick="showElement(123);">
+		</div>
+	</div>
+	
+	<!-- Part 22 -->	
+	
+	<div id="header" class="h1">
+		<a name="part22"></a>
+		<center>Post-acquisition: Review of a run</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="ReviewRun.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:70px;  LEFT:70px;"  onclick="showElement(124);">
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:10px;  LEFT:240px;" onclick="showElement(124);">
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:215px; LEFT:70px;"  onclick="showElement(124);">
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:290px; LEFT:640px;" onclick="showElement(124);">
+		
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:315px; LEFT:70px;"  onclick="showElement(125);">
+	
+		<div id="124" class="info" style="color:#000;">
+			(1) press the Run cycle key on the Mobile View Station, on the remote control or tab the Run cycle button C-arm stand, to dynamically view the images in the run.
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:70px;  LEFT:70px;"  onclick="showElement(124);">
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:10px;  LEFT:240px;" onclick="showElement(124);">
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:215px; LEFT:70px;"  onclick="showElement(124);">
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:290px; LEFT:640px;" onclick="showElement(124);">
+		</div>
+		<div id="125" class="info" style="color:#000;">
+			(2) On the Mobile View Station or remote control press the Run cycle key again to stop the dynamic view. On the C-arm stand touch screen tab the pause button.
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:315px; LEFT:70px;" onclick="showElement(125);">
+		</div>
+	</div>
+	
+	<!-- Part 23 -->	
+	
+	<div id="header" class="h1">
+		<a name="part23"></a>
+		<center>Post-acquisition: Outline tool (Mobile View Station)</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="Outline.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:100px; LEFT:0px;"   onclick="showElement(126);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:140px; LEFT:0px;"   onclick="showElement(127);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:40px;  LEFT:580px;" onclick="showElement(128);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:170px; LEFT:100px;" onclick="showElement(129);">
+		<img src="button5_grey.png" STYLE="position:absolute; TOP:210px; LEFT:0px;"   onclick="showElement(130);">
+		
+		<input id="style_1" class="alert_9" type="button" value="Notes" />
+	
+		<div id="126" class="info" style="color:#000;">
+			(1) The optional Outline tool can be used to draw markings on an image, for example, during vascular surgery to mark vessel branches and stent positioning on live fluoroscopy images.<br>
+						Click on the outline tool button on the examination monitor on the Mobile View Station. To hide a drawing without deleting it, click on the outline tool button on the examination monitor of the Mobile View Station once more. The drawing will be removed from the clinical image but is not deleted. To re-display an existing drawing, click on the outline tool button again.
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:100px; LEFT:0px;" onclick="showElement(126);">
+		</div>
+		<div id="127" class="info" style="color:#000;">
+			(2) Click on |Draw| in the outline panel.
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:140px; LEFT:0px;" onclick="showElement(127);">
+		</div>
+		<div id="128" class="info" style="color:#000;">
+			(3) To draw a dot on the image, click on the image where the dot is required. A yellow dot is drawn on the image. To draw a line on the image, click and drag the cursor on the image where the line is required. A yellow line is drawn on the image.<br>
+						Lines can be drawn using the mouse, a finger on the touch screen, or the stylus. For best results, it is recommended that you use the stylus.
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:40px; LEFT:580px;" onclick="showElement(128);">
+		</div>
+		<div id="129" class="info" style="color:#000;">
+			(4) To delete all lines or dots on the image, click |Delete all| in the outline panel.
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:170px; LEFT:100px;" onclick="showElement(129);">
+		</div>
+		<div id="130" class="info" style="color:#000;">
+			(5) Clicking |Undo| after clicking |Delete all| will undo the delete action. To delete the last line or dot drawn, click |Undo| in the outline panel. Clicking Undo can be repeated until all drawn lines or dots have been removed from the image.
+			<img src="button5_blue.png" STYLE="position:absolute; TOP:210px; LEFT:0px;" onclick="showElement(130);">
+		</div>
+	</div>
+	
+	<!-- Part 24 -->	
+	
+	<div id="header" class="h1">
+		<a name="part24"></a>
+		<center>Post-acquisition: Position Memory</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="Memory.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:270px; LEFT:60px;" onclick="showElement(131);">
+		
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:270px; LEFT:130px;" onclick="showElement(132);">
+		<img src="button2a_grey.png" STYLE="position:absolute; TOP:150px; LEFT:130px;" onclick="showElement(132);">
+		<img src="button2b_grey.png" STYLE="position:absolute; TOP:220px; LEFT:130px;" onclick="showElement(132);">
+		<img src="button2c_grey.png" STYLE="position:absolute; TOP:40px;  LEFT:130px;" onclick="showElement(132);">
+		
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:120px; LEFT:220px;" onclick="showElement(133);">
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:240px; LEFT:250px;" onclick="showElement(134);">
+		<img src="button5_grey.png" STYLE="position:absolute; TOP:220px; LEFT:200px;" onclick="showElement(135);">
+		<img src="button6_grey.png" STYLE="position:absolute; TOP:100px; LEFT:130px;" onclick="showElement(136);">
+		
+		<input id="style_1" class="alert_10" type="button" value="Notes" />
+	
+		<div id="131" class="info" style="color:#000;">
+			(1) Tap the |Position Memory| button on the C-arm stand touch screen. The position memory dialog is displayed. To close the position memory dialog, tap the |Position Memory| button on the C-arm stand touch screen once more.
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:270px; LEFT:60px;" onclick="showElement(131);">
+		</div>
+		<div id="132" class="info" style="color:#000;">
+			(2) To store a position, tap the |Store| button. The current C-arm position is stored in the first empty storage expander (A, B or C) and the storage expander opens to confirm the C-arm position has been stored. The time is also stored for reference.
+						<dd>- (2a) The position memory dialog contains three expanding storage positions (A, B and C) that can be used to store C-arm position values.</dd>
+						<dd>- (2b) When reviewing a prior stored run or image the |Selected Run| expander contains the C-arm position for the stored run.</dd>
+						<dd>- (2c) When a position is stored the storage expander opens to confirm. The time is also stored for reference.</dd>
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:270px; LEFT:130px;" onclick="showElement(132);">
+			<img src="button2a_blue.png" STYLE="position:absolute; TOP:150px; LEFT:130px;" onclick="showElement(132);">
+			<img src="button2b_blue.png" STYLE="position:absolute; TOP:220px; LEFT:130px;" onclick="showElement(132);">
+			<img src="button2c_blue.png" STYLE="position:absolute; TOP:40px;  LEFT:130px;" onclick="showElement(132);">
+		</div>
+		<div id="133" class="info" style="color:#000;">
+			(3) To go back to a previous stored position tap the desired position (A, B or C) to open the expander. The stored values are displayed
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:120px; LEFT:220px;" onclick="showElement(133);">
+		</div>
+		<div id="134" class="info" style="color:#000;">
+			(4) If only one expander is open and the C-arm positions are not matching the stored values, indicators are shown above the values of the Current Position that are different. The C-arm can now be manually repositioned to match the stored position. When the current position matches the stored position, no indicators are shown.
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:240px; LEFT:250px;" onclick="showElement(134);">
+		</div>
+		<div id="135" class="info" style="color:#000;">
+			(5) For recalling the position of a previous run, select the run from the overview screen (see chapter image review). 
+ 						Tap the |Position Memory| button as described under (1).
+						Tap the |Selected Run| expander. The position details of the selected run are displayed in the Selected Run expander. If only the Selected Run expander is open then indicators are shown above the values in the Current Position that are different to those stored. Manually reposition the C-arm to match the stored position. When the current position matches the position of the selected run, no indicators are shown.
+			<img src="button5_blue.png" STYLE="position:absolute; TOP:220px; LEFT:200px;" onclick="showElement(135);">
+		</div>
+		<div id="136" class="info" style="color:#000;">
+			(6) To delete a stored position:
+					 <dd>Tap the |Clear| button of the expander containing the position to be deleted.</dd>
+			<img src="button6_blue.png" STYLE="position:absolute; TOP:100px; LEFT:130px;" onclick="showElement(136);">
+		</div>
+	</div>
+	
+	<!-- Part 25 -->	
+	
+	<div id="header" class="h1">
+		<a name="part25"></a>
+		<center>Post Processing on Mobile View Station</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="Process.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute;  TOP:130px; LEFT:390px;" onclick="showElement(137);">
+		<img src="button2_grey.png" STYLE="position:absolute;  TOP:20px;  LEFT:580px;" onclick="showElement(138);">
+		<img src="button3_grey.png" STYLE="position:absolute;  TOP:60px;  LEFT:580px;" onclick="showElement(139);">
+		<img src="button4_grey.png" STYLE="position:absolute;  TOP:100px; LEFT:580px;" onclick="showElement(140);">
+		<img src="button5_grey.png" STYLE="position:absolute;  TOP:140px; LEFT:580px;" onclick="showElement(141);">
+		<img src="button6_grey.png" STYLE="position:absolute;  TOP:180px; LEFT:580px;" onclick="showElement(142);">
+		<img src="button7_grey.png" STYLE="position:absolute;  TOP:20px;  LEFT:710px;" onclick="showElement(143);">
+		<img src="button8_grey.png" STYLE="position:absolute;  TOP:60px;  LEFT:710px;" onclick="showElement(144);">
+		<img src="button9_grey.png" STYLE="position:absolute;  TOP:100px; LEFT:710px;" onclick="showElement(145);">
+		<img src="button10_grey.png" STYLE="position:absolute; TOP:140px; LEFT:710px;" onclick="showElement(146);">
+		<img src="button11_grey.png" STYLE="position:absolute; TOP:180px; LEFT:710px;" onclick="showElement(147);">
+		<img src="button12_grey.png" STYLE="position:absolute; TOP:220px; LEFT:580px;" onclick="showElement(148);">
+		
+		<input id="style_1" class="alert_11" type="button" value="Notes" />
+		<input id="style_1" class="alert_11" type="button" value="13" style="width:40px; height:40px; position:absolute; TOP:130px; LEFT:160px;"/>
+		<input id="style_1" class="alert_11" type="button" value="14" style="width:40px; height:40px; position:absolute; TOP:80px; LEFT:160px;"/>
+	
+		<div id="139" class="info" style="color:#000;">
+			(1) Select the Image Processing key.
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:130px; LEFT:390px;" onclick="showElement(137);">
+		</div>
+		<div id="140" class="info" style="color:#000;">
+			(2) Contrast brightness and edge enhancement 
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:20px; LEFT:580px;" onclick="showElement(138);">
+		</div>
+		<div id="141" class="info" style="color:#000;">
+			(3) Annotation and remark 
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:60px; LEFT:580px;" onclick="showElement(139);">
+		</div>
+		<div id="142" class="info" style="color:#000;">
+			(4) Zoom 
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:100px; LEFT:580px;" onclick="showElement(140);">
+		</div>
+		<div id="143" class="info" style="color:#000;">
+			(5) Metal Correction
+			<img src="button5_blue.png" STYLE="position:absolute; TOP:140px; LEFT:580px;" onclick="showElement(141);">
+		</div>
+		<div id="144" class="info" style="color:#000;">
+			(6) Landmarking (only works for subtracted images)
+			<img src="button6_blue.png" STYLE="position:absolute; TOP:180px; LEFT:580px;" onclick="showElement(142);">
+		</div>
+		<div id="145" class="info" style="color:#000;">
+			(7) Invert
+			<img src="button7_blue.png" STYLE="position:absolute; TOP:20px; LEFT:710px;" onclick="showElement(143);">
+		</div>
+		<div id="146" class="info" style="color:#000;">
+			(8) Manual electronic blanking (cropping)
+			<img src="button8_blue.png" STYLE="position:absolute; TOP:60px; LEFT:710px;" onclick="showElement(144);">
+		</div>
+		<div id="147" class="info" style="color:#000;">
+			(9) Measure
+			<img src="button9_blue.png" STYLE="position:absolute; TOP:100px; LEFT:710px;" onclick="showElement(145);">
+		</div> 
+		<div id="148" class="info" style="color:#000;">
+			(10) Pixel shift (only works for subtracted images)
+			<img src="button10_blue.png" STYLE="position:absolute; TOP:140px; LEFT:710px;" onclick="showElement(146);">
+		</div>
+		<div id="149" class="info" style="color:#000;">
+			(11) View trace (peak opacification)
+			<img src="button11_blue.png" STYLE="position:absolute; TOP:180px; LEFT:710px;" onclick="showElement(147);">
+		</div>
+		<div id="150" class="info" style="color:#000;">
+			(12) Console panel, content depends on the selected function.
+			<img src="button12_blue.png" STYLE="position:absolute; TOP:220px; LEFT:580px;" onclick="showElement(148);">
+		</div>
+	</div>
+	
+	<!-- Part 26 -->	
+	
+	<div id="header" class="h1">
+		<a name="part26"></a>
+		<center>Archiving stored images</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="Archive.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:80px; LEFT:80px;"   onclick="showElement(149);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:180px; LEFT:450px;" onclick="showElement(150);">
+		
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:140px; LEFT:600px;" onclick="showElement(151);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:240px; LEFT:600px;" onclick="showElement(151);">
+		
+		<img src="button4_grey.png" STYLE="position:absolute; TOP:310px; LEFT:630px;" onclick="showElement(152);">
+		
+		<input id="style_1" class="alert_12" type="button" value="Notes" />
+	
+		<div id="149" class="info" style="color:#000;">
+			(1) The stored images can be digitally archived via a DICOM network connection.
+						<br>Connect a data cable to the network and the Mobile View Station. For wireless no cable is needed. 
+						Press the Administration key on the Mobile View Station to switch to the Administration page, click the |Review| button and select the patient from the Review page.
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:80px; LEFT:80px;" onclick="showElement(149);">
+		</div>
+		<div id="150" class="info" style="color:#000;">
+			(2) Click the |Export| button.
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:180px; LEFT:450px;" onclick="showElement(150);">
+		</div>
+		<div id="151" class="info" style="color:#000;">
+			(3) Select the transfer options.
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:140px; LEFT:600px;" onclick="showElement(151);">
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:240px; LEFT:600px;" onclick="showElement(151);">
+		</div>
+		<div id="152" class="info" style="color:#000;">
+			(4) Click the |OK| button to start data transfer.
+			<img src="button4_blue.png" STYLE="position:absolute; TOP:310px; LEFT:630px;" onclick="showElement(152);">
+		</div>
+	</div>
+	
+	<!-- Part 27 -->	
+	
+	<div id="header" class="h1">
+		<a name="part27"></a>
+		<center>Shut down: Emergency power off</center>	
+	</div>
+	
+	<div id="IMG">
+
+		<img src="Down.jpg" id="helppart">
+	
+		<img src="button1_grey.png" STYLE="position:absolute; TOP:25px;  LEFT:10px;"  onclick="showElement(153);">
+		<img src="button2_grey.png" STYLE="position:absolute; TOP:160px; LEFT:520px;" onclick="showElement(154);">
+		<img src="button3_grey.png" STYLE="position:absolute; TOP:160px; LEFT:880px;" onclick="showElement(155);">
+		
+		<input id="style_1" class="alert_13" type="button" value="Notes" />
+	
+		<div id="153" class="info" style="color:#000;">
+			(1) To shut down the entire system: press the Off key at the Mobile View Station.
+			<img src="button1_blue.png" STYLE="position:absolute; TOP:25px; LEFT:10px;" onclick="showElement(153);">
+		</div>
+		<div id="154" class="info" style="color:#000;">
+			(2) To shut down the C-arm stand only: press the Off key at the C-arm stand. The C-arm can be switched on again without having to re-start the entire system (Mobile View Station works in stand-alone mode)
+			<img src="button2_blue.png" STYLE="position:absolute; TOP:160px; LEFT:520px;" onclick="showElement(154);">
+		</div>
+		<div id="155" class="info" style="color:#000;">
+			(3) In case of emergency, switch the system off. Press the Emergency off key to switch off the C-arm stand and remove the Mobile View Station mains power connector from the mains power outlet socket.
+			<img src="button3_blue.png" STYLE="position:absolute; TOP:160px; LEFT:880px;" onclick="showElement(155);">
+		</div>
+	</div>
+	
+	</body>
+</html>
